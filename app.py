@@ -1,14 +1,15 @@
 from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
+import os
 
 app = Flask(__name__)
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # تحميل الملفات المحفوظة
-model = joblib.load('model.pkl')
-label_encoders = joblib.load('label_encoders.pkl')
-output_encoders = joblib.load('output_encoders.pkl')
-X_columns = joblib.load('X_columns.pkl')
+model = joblib.load(os.path.join(BASE_DIR, 'model.pkl'))
+label_encoders = joblib.load(os.path.join(BASE_DIR, 'label_encoders.pkl'))
+output_encoders = joblib.load(os.path.join(BASE_DIR, 'output_encoders.pkl'))
+X_columns = joblib.load(os.path.join(BASE_DIR, 'X_columns.pkl'))
 
 @app.route('/predict', methods=['POST'])
 def predict():
