@@ -1,3 +1,5 @@
-fastapi
-uvicorn
-pydantic
+Flask
+pandas
+scikit-learn
+joblib
+gunicorn
